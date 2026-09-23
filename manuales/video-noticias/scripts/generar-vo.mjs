@@ -308,6 +308,22 @@ function listarVoces() {
   error("✖ En Linux no hay voz de sistema: usa --motor elevenlabs o --motor propio.");
 }
 
+/** Las voces SAPI de esta maquina como {nombre, cultura, genero}, o [] si no se pueden leer. */
+function vocesSapi() {
+  const ps = powershell();
+  if (!ps) return [];
+  const tmp = carpetaTemporal("generar-vo-");
+  const ps1 = path.join(tmp, "sapi.ps1");
+  fs.writeFileSync(ps1, SAPI_PS1, "ascii");
+  const r = ejecutar(ps, ["-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-File", ps1, "-Voces"]);
+  borrar(tmp);
+  return r.stdout
+    .split(/\r?\n/)
+    .map((l) => l.trim().split(/\s{2,}/))
+    .filter((partes) => partes.length >= 2)
+    .map(([nombre, cultura, genero]) => ({ nombre, cultura, genero }));
+}
+
 /* ── Principal ──────────────────────────────────────────────────────────── */
 
 function main() {
@@ -379,6 +395,12 @@ function main() {
   if (sistema) {
     console.log(`🎙  motor=${o.motor} voz=${o.voz || "(la de es-MX, o la del sistema)"} · ${o.ppm} ppm · pausa ${o.pausa}s · ${o.fps} fps`);
     console.log("    (PISTA GUIA: voz de sistema. Para publicar usa --motor elevenlabs o propio)");
+    // Un Windows sin voz en espanol locuta igual, en ingles y sin quejarse: se
+    // avisa antes (visto en un Windows real, que solo traia David y Zira en-US).
+    if (o.motor === "sapi" && !o.voz && !vocesSapi().some((v) => /^es-/i.test(v.cultura || ""))) {
+      log.aviso("no hay ninguna voz en espanol (es-*) instalada: Windows locutara con su voz por defecto, en otro idioma.");
+      console.log("    Anade una en Configuracion → Hora e idioma → Voz → Agregar voces (p. ej. Microsoft Sabina, es-MX), o elige otra con --voz (lista: --voces).");
+    }
     if (o.motor === "say" && tieneVozSay(o.voz) === false) {
       log.aviso(`la voz «${o.voz}» no esta entre las de say: macOS locutara con la voz por defecto del sistema.`);
       console.log("    Descargala en Ajustes del Sistema → Accesibilidad → Contenido hablado, o elige otra con --voz (lista: --voces).");
