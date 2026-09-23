@@ -597,6 +597,16 @@ def dhash(archivo):
     v = _gris(archivo, 8, 9)
     if h is None or v is None:
         return None
+    # UNA IMAGEN PLANA ES PLANA AUNQUE EL DESCODIFICADOR NO LO SEA. Un gris liso
+    # sale de una build de ffmpeg con filas a 166 y filas a 165 (ruido de +-1 del
+    # JPEG), y el gradiente estricto de abajo lo leia como tres franjas: 24 bits,
+    # o sea "estructura", y el dedupe dejaba de protegerlo. Medido en un Windows
+    # real con ffmpeg 9.0.2 (en este Mac el mismo gris sale exacto). Si toda la
+    # miniatura cabe en dos niveles de gris, es el hash canonico de ceros: los
+    # hashes de las fotos de verdad no cambian (una foto nunca cabe en dos niveles).
+    todo = bytes(h) + bytes(v)
+    if max(todo) - min(todo) <= 2:
+        return "0" * 32
     bits = 0
     for fila in range(8):
         base = fila * 9
