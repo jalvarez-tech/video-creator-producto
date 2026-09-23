@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "video-creator",
+  "version": "1.0.0",
+  "description": "Instala y actualiza un estudio de video-creator (motor Remotion + 7 skills de dirección de vídeo) en macOS o Windows, sin administrador, y te lleva hasta el primer vídeo.",
+  "author": { "name": "John Stevans Alvarez", "url": "https://github.com/jalvarez-tech" },
+  "homepage": "https://github.com/jalvarez-tech/video-creator",
+  "repository": "https://github.com/jalvarez-tech/video-creator",
+  "license": "MIT",
+  "keywords": ["video", "remotion", "motion-graphics", "avatar", "noticias", "shorts"]
+}

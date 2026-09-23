@@ -1,0 +1,129 @@
+# .gitignore de video-creator, escrito por ZONAS.
+#
+# El repo sirve a dos cosas a la vez: el PRODUCTO (motor, skills, scripts e
+# instaladores: lo que se comparte) y el ESTUDIO de quien lo usa (sus proyectos,
+# sus marcas, su banco de sonido, sus medios). Los dos viven en las mismas rutas,
+# y este archivo decide qué NO entra en git: secretos, lo que genera cada máquina
+# y todo lo que es material o estudio. La misma lista, para los scripts, está en
+# herramientas/zonas.mjs (la leen exportar-producto.mjs y revisar-producto.mjs).
+#
+# Ojo: ignorar no destrackea. Un archivo que ya está en el índice sigue en git
+# aunque una regla de aquí lo cubra; solo `git rm --cached` lo saca.
+
+# ─── 1. Secretos ─────────────────────────────────────────────────────────────
+# Las claves las escribe el usuario en .env (setup.mjs lo crea desde .env.example).
+.env
+.env.*
+!.env.example
+
+# ─── 2. Sistema operativo ────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── 3. Dependencias, builds y cachés (se regeneran) ────────────────────────
+**/node_modules/
+remotion/out/
+# Chrome Headless Shell que descarga Remotion para renderizar y para medir
+# (generar-avances.mjs, medir-anchos.mjs): cientos de MB de binario que
+# `node herramientas/setup.mjs` repone.
+.remotion/
+remotion/.remotion/
+# Salida por defecto de `hyperframes render` si alguien lo lanza a pelo en vez
+# de por render-hf.mjs (que la manda a pruebas-720p/ o a finales/).
+renders/
+**/renders/
+# Modelo de whisper (~470 MB): lo descarga `setup.mjs --whisper`.
+archivos/whisper/*.bin
+# Python: los scripts de manuales/ son de librería estándar y uv no crea
+# entornos dentro del repo, pero un intérprete siempre deja su caché.
+__pycache__/
+*.pyc
+.venv/
+# Carpeta local de herramientas, si alguien la deja dentro del repo.
+.herramientas/
+
+# ─── 4. Agentes: lo que cada máquina genera y lo que cada persona anota ─────
+# Los enlaces .claude/skills/<s> y .agents/skills/<s> → manuales/<s> los crea
+# setup.mjs en cada instalación (symlink en macOS, junction en Windows). Ahí
+# caen también las skills de terceros que se instalen aparte (`npx skills add`,
+# las de HyperFrames con prefijo): copias que se reponen, no se versionan.
+.claude/skills/*
+.agents/skills/*
+.claude/settings.local.json
+.claude/worktrees/
+# Notas locales de cada persona: Claude Code lee CLAUDE.local.md y Codex,
+# AGENTS.override.md. Se quedan en su máquina.
+CLAUDE.local.md
+AGENTS.override.md
+
+# ─── 5. Zonas del estudio: se ignoran SOLO en el producto ────────────────────
+# En este checkout (el ESTUDIO) los proyectos, las marcas, el banco de sonido y
+# el cuaderno (ESTUDIO.md) SÍ se versionan. Al exportar, exportar-producto.mjs
+# sustituye el bloque entre las dos marcas por las zonas de herramientas/zonas.mjs,
+# que el producto ignora entero (sonido/, proyectos/*, remotion/src/proyectos/*,
+# remotion/src/marcas/* salvo ejemplo.ts, remotion/public/* salvo lo del producto,
+# y todo ESTUDIO*.md). Lo que va DENTRO de las marcas es lo que el estudio no
+# versiona por ser material o marcadores locales.
+# >>> ZONAS DEL ESTUDIO (generado por herramientas/exportar-producto.mjs desde zonas.mjs) >>>
+# Aquí viven TUS proyectos, marcas, banco de sonido y medios. El producto no los
+# versiona: son tuyos. Si quieres versionarlos, hazlo en un repo aparte o quita
+# estas reglas en tu copia (y no las mandes al producto).
+sonido/*
+proyectos/*
+!proyectos/.gitkeep
+remotion/src/proyectos/*
+!remotion/src/proyectos/.gitkeep
+remotion/src/marcas/*
+!remotion/src/marcas/ejemplo.ts
+remotion/public/*
+!remotion/public/sfx/
+remotion/public/sfx/*
+!remotion/public/sfx/README.md
+!remotion/public/fuentes/
+!remotion/public/demo/
+archivos/*
+!archivos/capturas/
+archivos/capturas/*
+!archivos/capturas/.gitkeep
+!archivos/ejemplos/
+archivos/ejemplos/*
+!archivos/ejemplos/.gitkeep
+!archivos/marca/
+archivos/marca/*
+!archivos/marca/.gitkeep
+!archivos/musica/
+archivos/musica/*
+!archivos/musica/.gitkeep
+ESTUDIO.md
+**/ESTUDIO*.md
+# <<< ZONAS DEL ESTUDIO <<<
+
+# ─── 6. Material dentro de un proyecto ───────────────────────────────────────
+# En el producto la zona 5 tapa proyectos/ entero; en el estudio, que sí los
+# versiona, estas reglas dicen QUÉ es material y no código dentro de uno: el
+# original, el avatar, las pruebas, las vistas previas, la voz en off (se
+# regenera del guion), la música, el b-roll descargado y las copias de assets
+# del segundo motor. Los manifiestos, los guiones y las recetas SÍ se versionan.
+entrada/*
+avatar/*.mp4
+proyectos/*/original.*
+proyectos/*/avatar/
+proyectos/*/finales/
+proyectos/*/pruebas-720p/
+proyectos/*/vistas-previas/
+proyectos/*/vo/
+proyectos/*/musica/*.wav
+proyectos/*/broll/*/raw/
+proyectos/*/broll/cache/
+proyectos/*/broll/contactos/
+!proyectos/*/broll/manifiesto.json
+proyectos/*/hf/assets/*
+!proyectos/*/hf/assets/.gitkeep
+# Los PNG de `hyperframes snapshot`: evidencia de una revisión, no fuente.
+proyectos/*/hf/snapshots/
+# Papelera de Android (`.trashed-*`): archivos ya borrados que se cuelan al
+# sincronizar carpetas desde el móvil. No son material: son basura.
+**/.trashed-*
+# Los .gitkeep sujetan carpetas vacías; siempre entran.
+!**/.gitkeep

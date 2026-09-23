@@ -1,0 +1,27 @@
+# Finales de línea: git guarda LF en todo lo que detecta como texto, y el
+# checkout también deja LF, en macOS y en Windows. Lo único que Windows exige
+# en CRLF son los scripts de PowerShell y de cmd (PowerShell 5.1 y cmd.exe
+# leen mal un .ps1/.cmd con LF): esos se guardan y se sacan en CRLF.
+* text=auto eol=lf
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# Binarios: ni normalizar ni hacer diff.
+*.mp3 binary
+*.wav binary
+*.m4a binary
+*.flac binary
+*.mp4 binary
+*.mov binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.otf binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+*.bin binary
+*.pdf binary

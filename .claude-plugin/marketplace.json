@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "video-creator",
+  "description": "video-creator: sistema de vídeo con IA (Remotion + skills) para Claude Code y Codex",
+  "owner": { "name": "John Stevans Alvarez", "url": "https://github.com/jalvarez-tech" },
+  "plugins": [
+    {
+      "name": "video-creator",
+      "source": "./plugin",
+      "description": "Instala y actualiza un estudio de video-creator en tu máquina (macOS/Windows) y te lleva hasta el primer vídeo",
+      "version": "1.0.0",
+      "author": { "name": "John Stevans Alvarez" },
+      "license": "MIT",
+      "homepage": "https://github.com/jalvarez-tech/video-creator",
+      "repository": "https://github.com/jalvarez-tech/video-creator",
+      "category": "productivity",
+      "keywords": ["video", "remotion", "motion-graphics", "avatar", "noticias", "shorts"]
+    }
+  ]
+}

@@ -1,0 +1,453 @@
+{
+  "modo": "sintetico",
+  "fecha": "2026-09-23T03:14:40.074Z",
+  "ffmpeg": "ffmpeg version 8.1.2 Copyright (c) 2000-2026 the FFmpeg developers",
+  "plataforma": {
+    "so": "mac",
+    "arch": "arm64",
+    "nodo": "v25.8.0"
+  },
+  "fps": 30,
+  "archivos": {
+    "whoosh-light.wav": {
+      "sha256": "c1f1a9675f7027d49a91218b82cacd62c8b175bd9f208483eb172d4ba19fdea1",
+      "bytes": 42284,
+      "picoDbfs": -2.8,
+      "golpeMs": 145.4,
+      "picoFrame": 8,
+      "clase": "whoosh"
+    },
+    "whoosh-light-02.wav": {
+      "sha256": "94bc25479150a3794dd9eb10520cf0a928c982d5ca9abd57606e44ba60dec45e",
+      "bytes": 47084,
+      "picoDbfs": -2,
+      "golpeMs": 171.8,
+      "picoFrame": 9,
+      "clase": "whoosh"
+    },
+    "whoosh-light-03.wav": {
+      "sha256": "2787456e6f18f184c262bd614b44ce1472b6021b41798b18214dbd60c244ba00",
+      "bytes": 36524,
+      "picoDbfs": -0.7,
+      "golpeMs": 139.7,
+      "picoFrame": 7,
+      "clase": "whoosh"
+    },
+    "whoosh-whip.wav": {
+      "sha256": "a0cc9e6747514c7ddb2012ab7db2490dbccbbf2c061281a678eca0c7cbc2ac62",
+      "bytes": 34604,
+      "picoDbfs": -1,
+      "golpeMs": 155.8,
+      "picoFrame": 7,
+      "clase": "whoosh"
+    },
+    "whoosh-wind.wav": {
+      "sha256": "fc7e39642ee224976417189a747930ce90237b394a2a96db685c956028972542",
+      "bytes": 56684,
+      "picoDbfs": -2.6,
+      "golpeMs": 121.2,
+      "picoFrame": 11,
+      "clase": "whoosh"
+    },
+    "swoosh.mp3": {
+      "sha256": "70f7a5431e1e7535f9ecef24b8426a8099e7f5157dd0a05163c8695b4d609a1c",
+      "bytes": 12096,
+      "picoDbfs": -2.8,
+      "golpeMs": 144.2,
+      "picoFrame": 8,
+      "clase": "whoosh"
+    },
+    "swoosh-02.wav": {
+      "sha256": "1cb7ea048ffe1f1b6a23273e098b6c1ec6793845bba758ad3df1faf1098fa492",
+      "bytes": 42284,
+      "picoDbfs": -4.6,
+      "golpeMs": 141.2,
+      "picoFrame": 8,
+      "clase": "whoosh"
+    },
+    "swoosh-03.wav": {
+      "sha256": "4554341438d56752120027fa4b86dd6cc4ba49c955b1aebffea5f35c3a74187c",
+      "bytes": 47084,
+      "picoDbfs": -5.6,
+      "golpeMs": 167.8,
+      "picoFrame": 9,
+      "clase": "whoosh"
+    },
+    "whoosh-swoosh-07.wav": {
+      "sha256": "adcf6dd0e505f7192ddea590750620a1392fb370e63a13cb9c8de059fd903254",
+      "bytes": 155564,
+      "picoDbfs": -3.7,
+      "golpeMs": 541,
+      "picoFrame": 31,
+      "clase": "whoosh"
+    },
+    "whoosh-heavy.mp3": {
+      "sha256": "2fe096b84b8bbbe1c93bf3f05bb8a204f532fe88a781c52eda3558b6b7d4b401",
+      "bytes": 16704,
+      "picoDbfs": -0.1,
+      "golpeMs": 173,
+      "picoFrame": 12,
+      "clase": "whoosh"
+    },
+    "riser-low.mp3": {
+      "sha256": "d58bd7d9729c0356cad5afc1a8eebfdab7c94365d4e2e95689f694f51436c764",
+      "bytes": 39744,
+      "picoDbfs": -17.3,
+      "golpeMs": 543,
+      "picoFrame": 46,
+      "clase": "riser"
+    },
+    "riser-cymbal.mp3": {
+      "sha256": "7da5f6cbf691bd7903f263d5aa0a39d41ff454b5d27afdccd500d6232a2a778d",
+      "bytes": 41472,
+      "picoDbfs": -5,
+      "golpeMs": 730.9,
+      "picoFrame": 48,
+      "clase": "riser"
+    },
+    "reverse.mp3": {
+      "sha256": "7f28b45a68d1865a0032af22130a223a719f8cc495a72015307f2c3a463b0b0f",
+      "bytes": 12096,
+      "picoDbfs": -4.3,
+      "golpeMs": 239.7,
+      "picoFrame": 12,
+      "clase": "riser"
+    },
+    "impact-deep.mp3": {
+      "sha256": "3de8c2665dda630d015508a107399b29b30f41246d9a53a77cd888323e2ae4b0",
+      "bytes": 39744,
+      "picoDbfs": -0.6,
+      "golpeMs": 0,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "impact-sharp.wav": {
+      "sha256": "f925834c0f0217722ebf81bfa2bc74acb726339ad3bd3087af389252d7887677",
+      "bytes": 48044,
+      "picoDbfs": -1.6,
+      "golpeMs": 0.1,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "metal.wav": {
+      "sha256": "ff016c7123c8483cd00ebb30d50096ebc0dbaebc070839fd91e8b667fc7b5645",
+      "bytes": 115244,
+      "picoDbfs": -0.1,
+      "golpeMs": 0,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "metal-02.wav": {
+      "sha256": "145bd154393b0c8db6ba68701cbf9e0b61c0cea044d3c08e12f1aeb0e4a89db7",
+      "bytes": 115244,
+      "picoDbfs": -0.3,
+      "golpeMs": 0,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "metal-03.wav": {
+      "sha256": "f12b15ca99bc6e7c0268bf3e75630defdec9122e27835f2273dcfd3ae5ffa9d9",
+      "bytes": 86444,
+      "picoDbfs": 0,
+      "golpeMs": 0,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "click-camera.wav": {
+      "sha256": "b6a314af6b93b154de3d41b85865ea8b29782f35d628b054e865c76e29307857",
+      "bytes": 28844,
+      "picoDbfs": -0.3,
+      "golpeMs": 0,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "click-mouse.mp3": {
+      "sha256": "b6afc156cc631b33148255ab2255a35a2448dff530526bbe197318d7cf256eea",
+      "bytes": 4032,
+      "picoDbfs": -4.8,
+      "golpeMs": 0,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "click-mouse-02.mp3": {
+      "sha256": "16175747d29e5e7e45209ff47579db13a971535e6acefb44cf8f65ade2c6cb19",
+      "bytes": 4608,
+      "picoDbfs": -2.2,
+      "golpeMs": 0,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "click-mouse-03.mp3": {
+      "sha256": "6c6f51689260743565881b71d0e38a7b7ccb00f0224fdda260333437a9f89ca6",
+      "bytes": 4032,
+      "picoDbfs": -3.7,
+      "golpeMs": 0,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "click-pen.mp3": {
+      "sha256": "0a7e51f38d1a2652c279bd433a1db9099b28ca473c3a6ab311ed4f9c4d4952cc",
+      "bytes": 6336,
+      "picoDbfs": -0.5,
+      "golpeMs": 0.1,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "ui.mp3": {
+      "sha256": "a307fbfc831766ee2477b8a51950792e01048e498691e1bcff752890a262a21d",
+      "bytes": 4032,
+      "picoDbfs": -7,
+      "golpeMs": 0.1,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "tick.mp3": {
+      "sha256": "0fc33025cf53849c8518c57ad98151e01177c2dfb64c6f9bd3e9430652556d3a",
+      "bytes": 97344,
+      "picoDbfs": -4.6,
+      "golpeMs": 0.1,
+      "picoFrame": 60,
+      "clase": "texture"
+    },
+    "pop.mp3": {
+      "sha256": "838677d8565db6cf2f8c7b59cf807893e4b18d9d97c5db2fdff34832d5a97439",
+      "bytes": 5760,
+      "picoDbfs": -6,
+      "golpeMs": 0.1,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "pop-02.mp3": {
+      "sha256": "16e3c34ef95126930c6aafcdd3d147a581e3c4f6b97bbf5d37d048397e47b635",
+      "bytes": 6336,
+      "picoDbfs": -13.4,
+      "golpeMs": 0.1,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "pop-03.mp3": {
+      "sha256": "b8f3cfb110fc7ad6f3431650b69696e290790c22a461ce6b34d76e9195261ec4",
+      "bytes": 4608,
+      "picoDbfs": -12.2,
+      "golpeMs": 0.1,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "boing.mp3": {
+      "sha256": "eb060d0cb990c8de13c0ee8a8860777cda24ce9d9301fc37356118a2c3d5b868",
+      "bytes": 23040,
+      "picoDbfs": 0,
+      "golpeMs": 0.3,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "notification.wav": {
+      "sha256": "6748b8f41233e02905bef2fd1e3dee1627912f1afbeba4296914f1e6d0654ccc",
+      "bytes": 96044,
+      "picoDbfs": -11.4,
+      "golpeMs": 0.1,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "msg-send.wav": {
+      "sha256": "7a2153908b521980b9c53d799753b47001fe2cf0e71e98e6a2136a364a9b220d",
+      "bytes": 33644,
+      "picoDbfs": -0.1,
+      "golpeMs": 0,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "data-count.mp3": {
+      "sha256": "24307bea5855e5d04f0bc5df8e615a5381a9b7471b74f312c7986c9fcbfaf818",
+      "bytes": 73152,
+      "picoDbfs": -9.3,
+      "golpeMs": 0.1,
+      "picoFrame": 66,
+      "clase": "texture"
+    },
+    "digital.wav": {
+      "sha256": "ea3ce5faae475da35608e38bbd6e8828036dca3453968e5032cd5b5d1c55e75f",
+      "bytes": 144044,
+      "picoDbfs": -2.3,
+      "golpeMs": 0.4,
+      "picoFrame": 1,
+      "clase": "texture"
+    },
+    "glitch.wav": {
+      "sha256": "6839292d939dc3e23fa3b65dcd2bf2b6289d262776f772a501a2b226e04f952c",
+      "bytes": 57644,
+      "picoDbfs": -20.6,
+      "golpeMs": 0.3,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "glitch-02.wav": {
+      "sha256": "d9c13a2e229095f7b1b1cd174a6166bce8d31858d44fd97c923e253a3ccb4c66",
+      "bytes": 52844,
+      "picoDbfs": -2.4,
+      "golpeMs": 0.3,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "glitch-03.wav": {
+      "sha256": "a24f4b8338deefc9e9413de533bf0bc3a9dea6e7100827b1a05d1a930abd60de",
+      "bytes": 67244,
+      "picoDbfs": -6.3,
+      "golpeMs": 0.4,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "electric.mp3": {
+      "sha256": "7bd7fadd9853edc25ee7154355303df61596b02ba991b3a750c1e105e2cdd61d",
+      "bytes": 20736,
+      "picoDbfs": -1.5,
+      "golpeMs": 0.1,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "spin.wav": {
+      "sha256": "820bbcb28d3f2ab9b49498a4339e4597d96cededf7bc8ad7dd9fcaeb1424ca08",
+      "bytes": 192044,
+      "picoDbfs": -11.5,
+      "golpeMs": 6.7,
+      "picoFrame": 36,
+      "clase": "texture"
+    },
+    "typing.mp3": {
+      "sha256": "929d70a32ba4917838fa46939f9b3d4f2c4283f8d422095bdc721ac678ce5a28",
+      "bytes": 73152,
+      "picoDbfs": -7.9,
+      "golpeMs": 0,
+      "picoFrame": 46,
+      "clase": "texture"
+    },
+    "chime.mp3": {
+      "sha256": "f563d4dcb8c93eb464e05f172ab74f3f444cb37db5dd98220ef8a0550873466f",
+      "bytes": 37440,
+      "picoDbfs": -5.3,
+      "golpeMs": 0.2,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "chime-02.mp3": {
+      "sha256": "a9d77d400257274e5d9519e157f4d7bd9b1f404cfabccab27a0b9bf0c750c1bc",
+      "bytes": 25344,
+      "picoDbfs": -7.4,
+      "golpeMs": 0.3,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "chime-03.mp3": {
+      "sha256": "4829b150924f8913e0365ee304f9c0f23f1ee7ddb9d6947e6e637a3bf673eb57",
+      "bytes": 49536,
+      "picoDbfs": 0,
+      "golpeMs": 0.1,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "success.wav": {
+      "sha256": "9d351a8619fa2f143a3c3d034c04b12428d1a5c2049dfcbab3eeb8f9098f2941",
+      "bytes": 86444,
+      "picoDbfs": -0.4,
+      "golpeMs": 0.2,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "error.mp3": {
+      "sha256": "b015d22909dc7ce4ead0d6e74ed5030b9bb541cf6ca9d2c7cd6d91d2b3178e75",
+      "bytes": 12096,
+      "picoDbfs": -8.9,
+      "golpeMs": 0.4,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "money.mp3": {
+      "sha256": "9f3e5590510a782323d8d01b27963d4ef08e4bd6bbcb4e44b77889b6ad52029a",
+      "bytes": 23040,
+      "picoDbfs": -4.1,
+      "golpeMs": 0.2,
+      "picoFrame": 1,
+      "clase": "impact"
+    },
+    "coin.mp3": {
+      "sha256": "57f68045f1e04395dc8ca42e466f13d5c1626ed0766d3a9bb0ba67235b70ece2",
+      "bytes": 12096,
+      "picoDbfs": 0,
+      "golpeMs": 0.1,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "scribble.mp3": {
+      "sha256": "99ee71e727d684283e3872d747ff4aadee40ca0ed543829645ccadb035698e52",
+      "bytes": 37440,
+      "picoDbfs": -2.8,
+      "golpeMs": 5.9,
+      "picoFrame": 39,
+      "clase": "texture"
+    },
+    "paper.wav": {
+      "sha256": "3d4a5d7fd53f86e32dea02171407308eb332901d050e62c464bb7e87eda22f86",
+      "bytes": 67244,
+      "picoDbfs": 0,
+      "golpeMs": 0.3,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "liquid.mp3": {
+      "sha256": "2e45b7eeb03f0965f94eb118cd90ac38f2d230b19ce7b4df3b9c72f8a2c4ebcf",
+      "bytes": 13248,
+      "picoDbfs": -2.3,
+      "golpeMs": 0.2,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "sparkle.mp3": {
+      "sha256": "f82e5b71b0114dd010ed83ef5b2e4b41c86c6b5fa4e480491d741b3f892be541",
+      "bytes": 29952,
+      "picoDbfs": -6.3,
+      "golpeMs": 0,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "sparkle-02.mp3": {
+      "sha256": "c1d44c6e696dc6c3f55e9ac9b0b654d4e7b7bd27195c73e2bd65a10460c9e7c9",
+      "bytes": 49536,
+      "picoDbfs": -3.8,
+      "golpeMs": 0.1,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "sparkle-03.wav": {
+      "sha256": "fb3a5addd159333c06783a41c56c2cd44c61fdd757d715fa014269d37bb95dea",
+      "bytes": 57644,
+      "picoDbfs": -6,
+      "golpeMs": 0,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "logo.mp3": {
+      "sha256": "09d556c00eb35544ef6d05957b19ed198206ee8aa8f4d54eea9614f10d9c7ebb",
+      "bytes": 61632,
+      "picoDbfs": -2.2,
+      "golpeMs": 0.3,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "cartoon.mp3": {
+      "sha256": "9b106b0ffa9d83f0b0fedbd9867b20f238bb8682c072966d74414b92d59b3575",
+      "bytes": 18432,
+      "picoDbfs": -12.6,
+      "golpeMs": 0.5,
+      "picoFrame": 0,
+      "clase": "impact"
+    },
+    "ambient-wind.mp3": {
+      "sha256": "6a00d3a8af210c2c8210caf341075c6080501e80ba6eaf41abf572c2455ae48e",
+      "bytes": 193536,
+      "picoDbfs": -6.6,
+      "golpeMs": 1.1,
+      "picoFrame": 25,
+      "clase": "texture"
+    }
+  }
+}

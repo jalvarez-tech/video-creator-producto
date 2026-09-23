@@ -1,0 +1,31 @@
+/*
+ * RESET MÍNIMO — lo que Tailwind aportaba de verdad en este proyecto.
+ *
+ * Aquí no se usa ni una clase de Tailwind (`grep -rc className src/` = 0: las
+ * 9.500 líneas se estilan con objetos `style`), pero `@import "tailwindcss"` sí
+ * traía su *preflight*, y de ahí depende la maqueta: sin el `margin: 0` del
+ * body, TODAS las composiciones se desplazan unos píxeles. Por eso el framework
+ * se quita y el reset se queda explícito: mismo resultado, sin compilar en cada
+ * bundle un CSS de utilidades que nadie referencia.
+ *
+ * Verificado: con estas reglas los stills salen byte a byte iguales que con
+ * Tailwind. Si tocas algo de aquí, vuelve a compararlos antes de dar por bueno.
+ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+}
+* {
+  margin: 0;
+}
+html {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+body {
+  line-height: inherit;
+}

@@ -1,0 +1,108 @@
+# verificar.yml — instala el sistema en limpio en macOS y en Windows y comprueba
+# que funciona en nivel 0 (sin claves): instalador → doctor → lint → un fotograma
+# → validadores → guard del producto.
+#
+# Cada paso es UN comando, sin `&&`: en Windows corre bajo PowerShell y así se
+# prueba lo mismo que hará el agente de un usuario. FFmpeg y uv se instalan con
+# lo que el runner ya trae (brew, choco, setup-uv) y el instalador del repo los
+# detecta y no los vuelve a bajar; lo que no esté (Chrome de Remotion,
+# auto-editor, `npm ci`) lo pone `herramientas/setup.mjs`.
+name: verificar
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verificar-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verificar:
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: remotion/package-lock.json
+
+      # uv de la action oficial: queda en el PATH del job, que es lo que necesita
+      # el paso de `uv run` más abajo (lo que instale el instalador en la carpeta
+      # del usuario no entra en el PATH de los pasos siguientes; los scripts del
+      # repo lo encuentran igual porque miran esa carpeta antes que el PATH).
+      - uses: astral-sh/setup-uv@v10.2.0
+
+      - name: FFmpeg (macOS)
+        if: runner.os == 'macOS'
+        run: brew install ffmpeg
+
+      - name: FFmpeg (Windows)
+        if: runner.os == 'Windows'
+        run: choco install ffmpeg -y --no-progress
+
+      - name: Instalar (macOS)
+        if: runner.os == 'macOS'
+        run: bash instalar.sh
+
+      # Windows PowerShell 5.1 a propósito (el caso difícil): es lo que tiene un
+      # Windows sin pwsh 7 y lo que lanza instalar.cmd.
+      - name: Instalar (Windows)
+        if: runner.os == 'Windows'
+        shell: cmd
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File instalar.ps1
+
+      - name: Doctor
+        run: node herramientas/doctor.mjs
+
+      - name: Lint (eslint + tsc)
+        working-directory: remotion
+        run: npm run lint
+
+      - name: Un fotograma de Prueba
+        working-directory: remotion
+        run: npx remotion still src/index.ts Prueba out/prueba.png
+
+      - name: Validador del catálogo de gráficos
+        run: node manuales/motion-graphics/scripts/revisar-catalogo.mjs
+
+      - name: Validador de la marca
+        run: node manuales/motion-graphics/scripts/revisar-marca.mjs
+
+      - name: Validador de los bancos (Python, sin red)
+        run: uv run manuales/edicion-video/scripts/revisar-bancos.py
+
+      # El guard del producto. En un checkout del PRODUCTO comprueba rutas y
+      # cadenas; si este workflow corre en el ESTUDIO (donde sonido/ y los
+      # proyectos están trackeados a propósito) solo comprueba las cadenas,
+      # que es lo que allí puede fallar de verdad.
+      - name: Guard del producto (rutas y cadenas prohibidas)
+        shell: bash
+        run: |
+          if [ -n "$(git ls-files -- sonido | head -n 1)" ]; then
+            echo "checkout del estudio: solo cadenas prohibidas"
+            node herramientas/revisar-producto.mjs --estudio
+          else
+            node herramientas/revisar-producto.mjs
+          fi
+
+      - name: Guardar el fotograma
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: prueba-${{ matrix.os }}
+          path: remotion/out/prueba.png
+          if-no-files-found: ignore

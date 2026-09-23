@@ -1,0 +1,201 @@
+<!doctype html>
+<!--
+  PLANTILLA del motor HyperFrames — copia de la que se renderizó y se miró.
+  La escribe `scripts/nuevo-hf.mjs`; los __TOKENS__ ya vienen sustituidos.
+
+  Las cuatro reglas que rompen el render EN SILENCIO (las demás las caza `check`):
+   1. El fondo va en un hijo full-bleed (.fondo), NUNCA en #root: el compositing
+      del producer puede tirar el background de la raíz y el frame sale NEGRO,
+      aunque `preview` y `snapshot` lo enseñen bien.
+   2. La raíz lleva `data-start="0"`. Sin él, lint: root_composition_missing_data_start.
+   3. No anides un `.clip` dentro de OTRO elemento con `data-start`: el ancestro
+      le recorta la ventana y su `data-start` pasa a ser relativo. Un wrapper sin
+      `data-start` (una cámara, p. ej.) es transparente y sí vale — aquí los
+      clips van a primer nivel por legibilidad, no por obligación.
+   4. Nunca un `transform` inicial en CSS + un tween de GSAP sobre esa misma
+      propiedad. El estado inicial va DENTRO del tween: `gsap.fromTo(...)`.
+-->
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=__ANCHO__, height=__ALTO__" />
+    <title>__TITULO__</title>
+    <!-- GSAP vendorizado a propósito: la plantilla `hyperframes init` lo carga
+         de un CDN, y eso convierte «puedo re-renderizar esta pieza dentro de un
+         año» en «si jsdelivr sigue ahí». Misma disciplina que el b-roll. -->
+    <script src="./vendor/gsap-3.14.2.min.js"></script>
+    <!-- La marca NO se escribe aquí: se genera desde src/marcas/<canal>.ts.
+         `node manuales/motor-hyperframes/scripts/marca-a-css.mjs <canal> marca.css` -->
+    <link rel="stylesheet" href="./marca.css" />
+    <style>
+      body {
+        margin: 0;
+        font-family: var(--letra-texto);
+      }
+      #root {
+        position: relative;
+        width: __ANCHO__px;
+        height: __ALTO__px;
+        overflow: hidden;
+      }
+      .fondo {
+        position: absolute;
+        inset: 0;
+        background: var(--papel);
+      }
+      .clip {
+        position: absolute;
+        inset: 0;
+      }
+
+      /* ── Bloque de titular ─────────────────────────────────────────────── */
+      .marco {
+        position: absolute;
+        left: 88px;
+        right: 88px;
+        top: 420px;
+      }
+      .kicker {
+        margin: 0 0 28px;
+        font-size: 40px;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        /* --acento-texto, no --acento: el acento a secas no llega a 3:1 sobre
+           el papel y `check` falla la puerta. Ver marca-a-css.mjs. */
+        color: var(--acento-texto);
+      }
+      .titular {
+        margin: 0;
+        font-family: var(--letra-display);
+        font-size: 104px;
+        line-height: 1.06;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--tinta);
+      }
+      .regla {
+        height: var(--borde);
+        width: 260px;
+        margin-top: 44px;
+        background: var(--acento);
+        transform-origin: left center;
+      }
+
+      /* ── Bloque de dato ────────────────────────────────────────────────── */
+      .caja {
+        position: absolute;
+        left: 88px;
+        right: 88px;
+        top: 1090px;
+        padding: 56px 64px;
+        border-radius: var(--radio);
+        background: var(--hueso);
+        border: 1px solid var(--linea);
+        box-shadow: var(--sombra-caja);
+      }
+      .cifra {
+        margin: 0;
+        font-family: var(--letra-display);
+        font-size: 168px;
+        line-height: 1;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        color: var(--tinta);
+        font-variant-numeric: tabular-nums;
+      }
+      .pie {
+        margin: 20px 0 0;
+        font-size: 38px;
+        font-weight: 600;
+        color: var(--tinta-suave);
+      }
+
+      /* ── Sello ──────────────────────────────────────────────────────────
+         Va en TODOS los frames, así que NO es un clip: es cromo persistente.
+         Un canal con `sello.texto: null` no lleva píldora — bórrala entera. */
+      .sello {
+        position: absolute;
+        left: 88px;
+        bottom: 96px;
+        padding: 16px 30px;
+        border-radius: 999px;
+        background: var(--tinta);
+        color: var(--hueso);
+        font-size: 26px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="__ID__"
+      data-start="0"
+      data-width="__ANCHO__"
+      data-height="__ALTO__"
+      data-duration="__DURACION__"
+      data-fps="__FPS__"
+    >
+      <div class="fondo"></div>
+
+      <section id="bloque-titular" class="clip" data-start="0" data-duration="__DURACION__" data-track-index="0">
+        <div class="marco">
+          <p id="kicker" class="kicker">__SELLO__</p>
+          <h1 id="titular" class="titular">Sustituye este titular</h1>
+          <div id="regla" class="regla"></div>
+        </div>
+      </section>
+
+      <section id="bloque-dato" class="clip" data-start="3" data-duration="5" data-track-index="1">
+        <div class="caja">
+          <p id="cifra" class="cifra">0</p>
+          <p id="pie" class="pie">qué significa esa cifra</p>
+        </div>
+      </section>
+
+      <div class="sello">__SELLO__</div>
+
+      <!-- SFX: el snippet vive en contrato-hf.md § Sonido, y NO se deja aquí
+           comentado. Medido: `hyperframes lint` no ignora los comentarios HTML,
+           así que un elemento de audio comentado que apunte a un archivo que no
+           existe falla igual la puerta (`audio_src_not_found`) — y de paso deja
+           el check en 0 muestras de layout y 0 de contraste, que parece verde y
+           no lo es. Ni el nombre del archivo se puede escribir aquí. -->
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Entradas del titular. Los tiempos van en SEGUNDOS (no en frames): es la
+      // diferencia de contrato más grande con Remotion. Ver equivalencias.md.
+      tl.fromTo("#kicker", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 0.2);
+      tl.fromTo("#titular", { y: 44, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" }, 0.35);
+      tl.fromTo("#regla", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.out" }, 0.9);
+
+      // Contador determinista: se interpola un objeto y se escribe el texto en
+      // cada seek. Nada de `setInterval` ni de leer un reloj — el render pide
+      // el frame N en cualquier orden y con varios workers a la vez.
+      const n = { v: 0 };
+      tl.fromTo("#bloque-dato .caja", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 3.0);
+      tl.to(
+        n,
+        {
+          v: 30,
+          duration: 1.1,
+          ease: "power1.out",
+          onUpdate: () => {
+            document.getElementById("cifra").textContent = Math.round(n.v);
+          },
+        },
+        3.2
+      );
+      tl.fromTo("#pie", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 3.9);
+
+      // UNA sola timeline, pausada, con la clave = data-composition-id.
+      window.__timelines["__ID__"] = tl;
+    </script>
+  </body>
+</html>
