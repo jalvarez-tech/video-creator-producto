@@ -11,7 +11,7 @@ license: MIT
 compatibility: Necesita internet para descargar (~1,5 GB con el Chrome de Remotion) y Node 22+, que el instalador trae si falta. Windows ARM64 no renderiza.
 metadata:
   autor: John Stevans Alvarez
-  repo: https://github.com/jalvarez-tech/video-creator
+  repo: https://github.com/jalvarez-tech/video-creator-producto
 ---
 
 # Instalar un estudio de video-creator
@@ -37,13 +37,13 @@ es una actualización (ve al paso 5).
 
 ## 2. Traer el código
 
-Repo: `https://github.com/jalvarez-tech/video-creator`.
+Repo: `https://github.com/jalvarez-tech/video-creator-producto`.
 
 - Con `git` disponible (macOS lo trae tras aceptar el diálogo de las Command Line
-  Tools; en Windows solo si lo instalaron): `git clone https://github.com/jalvarez-tech/video-creator.git <carpeta>`
+  Tools; en Windows solo si lo instalaron): `git clone https://github.com/jalvarez-tech/video-creator-producto.git <carpeta>`
 - Sin git, el ZIP de la rama principal:
-  - macOS/Linux: `curl -fsSL -o video-creator.zip https://github.com/jalvarez-tech/video-creator/archive/refs/heads/main.zip` y luego `unzip -q video-creator.zip`; la carpeta se llama `video-creator-main`: renómbrala a `<carpeta>`.
-  - Windows (PowerShell): `Invoke-WebRequest -Uri https://github.com/jalvarez-tech/video-creator/archive/refs/heads/main.zip -OutFile video-creator.zip` y `Expand-Archive video-creator.zip -DestinationPath .`; renombra `video-creator-main` a `<carpeta>`.
+  - macOS/Linux: `curl -fsSL -o video-creator.zip https://github.com/jalvarez-tech/video-creator-producto/archive/refs/heads/main.zip` y luego `unzip -q video-creator.zip`; la carpeta se llama `video-creator-producto-main`: renómbrala a `<carpeta>`.
+  - Windows (PowerShell): `Invoke-WebRequest -Uri https://github.com/jalvarez-tech/video-creator-producto/archive/refs/heads/main.zip -OutFile video-creator.zip` y `Expand-Archive video-creator.zip -DestinationPath .`; renombra `video-creator-producto-main` a `<carpeta>`.
 
 Un comando por línea. En PowerShell 5.1 no existe `&&`.
 

@@ -21,8 +21,6 @@ Tú hablas con el agente en español («monta el vídeo con este guion», «conv
 
 ## 🚀 Instalar
 
-[Nota: los caminos 0 y 3 funcionan cuando el producto esté publicado en la URL que citan; hasta entonces, entra por el camino 1 o el 2 con la carpeta que te hayan pasado.]
-
 Funciona en **macOS** y en **Windows**, sin permisos de administrador. Hay cuatro caminos; los cuatro acaban en el mismo sitio.
 
 ### Camino 0 — desde el chat, sin descargar nada a mano (plugin)
@@ -31,8 +29,8 @@ El repo es también un *marketplace* de plugins, con una sola skill: la que inst
 
 | Agente | Comandos |
 |---|---|
-| Claude Code | `/plugin marketplace add jalvarez-tech/video-creator` · luego `/plugin install video-creator@video-creator` · luego escribe **«instala video-creator»** |
-| Codex | `codex plugin marketplace add jalvarez-tech/video-creator` · luego `codex plugin add video-creator@video-creator` · luego, en el chat, **«instala video-creator»** |
+| Claude Code | `/plugin marketplace add jalvarez-tech/video-creator-producto` · luego `/plugin install video-creator@video-creator` · luego escribe **«instala video-creator»** |
+| Codex | `codex plugin marketplace add jalvarez-tech/video-creator-producto` · luego `codex plugin add video-creator@video-creator` · luego, en el chat, **«instala video-creator»** |
 
 La skill (`plugin/skills/instalar/SKILL.md`) pregunta dónde, trae el código, lanza el instalador y te deja en el primer vídeo. Sirve también para **actualizar**.
 

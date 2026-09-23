@@ -11,8 +11,8 @@
       "version": "1.0.0",
       "author": { "name": "John Stevans Alvarez" },
       "license": "MIT",
-      "homepage": "https://github.com/jalvarez-tech/video-creator",
-      "repository": "https://github.com/jalvarez-tech/video-creator",
+      "homepage": "https://github.com/jalvarez-tech/video-creator-producto",
+      "repository": "https://github.com/jalvarez-tech/video-creator-producto",
       "category": "productivity",
       "keywords": ["video", "remotion", "motion-graphics", "avatar", "noticias", "shorts"]
     }
