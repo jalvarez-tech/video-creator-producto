@@ -103,8 +103,12 @@ function Get-MayorDeNode([string]$Exe) {
   $viejo = $ErrorActionPreference
   $ErrorActionPreference = 'Continue'
   try {
-    $v = & $Exe -p 'process.versions.node.split(".")[0]' 2>$null
-    if ($LASTEXITCODE -eq 0 -and "$v" -match '^\d+$') { return [int]$v }
+    # Con "--version" y no con "-p <js>": PowerShell 5.1 pasa las comillas dobles de un
+    # argumento sin escapar, el runtime de C de node.exe las quita y el JS llega roto
+    # (SyntaxError, codigo 1): en un Windows real, esta funcion devolvia 0 con un
+    # Node 24 recien instalado y el instalador daba por perdido lo que acababa de poner.
+    $v = & $Exe --version 2>$null
+    if ($LASTEXITCODE -eq 0 -and "$v" -match '^v(\d+)\.') { return [int]$Matches[1] }
     return 0
   } catch {
     return 0
